@@ -35,7 +35,7 @@ pipeline
         {
             steps
             {
-                sh 'cat Test_Dir/Test_File"
+                sh 'cat Test_Dir/Test_File'
             }
         }
 }        
