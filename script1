@@ -1,0 +1,41 @@
+pipeline 
+{
+    agent any
+    stages 
+    {
+        stage('Test echo command')
+        {
+            steps
+            {
+                echo 'Hello world!'
+            }
+        }    
+        stage('Create a directory with the sh command')
+        {
+            steps
+            {
+                sh 'mkdir Test_Dir'
+            }
+        }    
+        stage('Create a file in Test_Dir')
+        {
+            steps 
+            {
+                sh 'touch Test_Dir/Test_File'
+            }
+        }
+        stage('Write to Test_File non-interactively')
+        {
+            steps 
+            {
+                sh "echo 'Hello World!' >> Test_Dir/Test_File"
+            }
+        }
+        stage('Read Test_File')
+        {
+            steps
+            {
+                sh 'cat Test_Dir/Test_File"
+            }
+        }
+}        
