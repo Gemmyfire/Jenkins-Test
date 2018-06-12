@@ -1,0 +1,35 @@
+pipeline 
+{
+    agent any
+    stages 
+    {
+        stage('Test echo command')
+        {
+            steps
+            {
+                echo 'Hello world!'
+            }
+        }    
+        stage('Create a directory with the bat command')
+        {
+            steps
+            {
+                bat 'mkdir C:\\TestDirectory'
+            }
+        }    
+        stage('Create a file with a PowerShell command')
+        {
+            steps 
+            {
+                powershell 'New-Item C:\\TestDirectory -Name \"hi.txt\" -ItemType \"file\" -Value \"hi\"'
+            }
+        }
+        stage('Create a file by running a local PowerShell script')
+        {
+            steps 
+            {
+                powershell 'C:\\Script.ps1'
+            }
+        }
+    }   
+}
