@@ -21,7 +21,7 @@ pipeline
         {
             steps 
             {
-                powershell 'New-Item C:\\TestDirectory -Name \"hi.txt\" -ItemType \"file\" -Value \"hi\"'
+                powershell 'New-Item C:\\TestDirectory -Name \"DirectCommandFile.txt\" -ItemType \"file\" -Value \"This file was created with a command.\"'
             }
         }
         stage('Create a file by running a local PowerShell script')
