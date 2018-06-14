@@ -1,0 +1,35 @@
+pipeline 
+{
+    agent { label 'Windows' }
+    stages 
+    {
+        stage('Test echo command')
+        {
+            steps
+            {
+                echo 'Hello world!'
+            }
+        }    
+        stage('Create a directory with the bat command')
+        {
+            steps
+            {
+                bat 'mkdir C:\\TestDirectory'
+            }
+        }    
+        stage('Create a file with a PowerShell command')
+        {
+            steps 
+            {
+                powershell 'New-Item C:\\TestDirectory -Name \"DirectCommandFile.txt\" -ItemType \"file\" -Value \"This file was created with a command.\"'
+            }
+        }
+        stage('Create a file by running a local PowerShell script')
+        {
+            steps 
+            {
+                powershell 'C:\\Script.ps1'
+            }
+        }
+    }   
+}
